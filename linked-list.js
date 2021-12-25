@@ -48,7 +48,24 @@ class LinkedList {
 
   /** pop(): return & remove last item. */
 
-  pop() {}
+  pop() {
+    let currentNode = this.head;
+    const popVal = this.tail.val;
+
+    while (currentNode) {
+      if (currentNode.next === this.tail) {
+        this.tail = currentNode;
+      }
+      currentNode = currentNode.next;
+    }
+
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return popVal;
+  }
 
   /** shift(): return & remove first item. */
 
