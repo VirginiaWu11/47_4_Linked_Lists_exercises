@@ -132,7 +132,18 @@ class LinkedList {
 
   /** removeAt(idx): return & remove item at idx, */
 
-  removeAt(idx) {}
+  removeAt(idx) {
+    if (idx === 0) {
+      this.shift();
+    } else if (idx === this.length - 1) {
+      this.pop();
+    } else {
+      let currentNode = this.getAt(idx, true);
+      let connectingNextNode = currentNode.next.next;
+      currentNode.next = connectingNextNode;
+      this.length--;
+    }
+  }
 
   /** average(): return an average of all values in the list */
 
