@@ -115,7 +115,20 @@ class LinkedList {
 
   /** insertAt(idx, val): add node w/val before idx. */
 
-  insertAt(idx, val) {}
+  insertAt(idx, val) {
+    if (idx === 0) {
+      this.unshift(val);
+    } else if (idx === this.length) {
+      this.push(val);
+    } else {
+      let currentNode = this.getAt(idx - 1, true);
+      let connectingNextNode = currentNode.next;
+      let newNode = new Node(val);
+      currentNode.next = newNode;
+      newNode.next = connectingNextNode;
+      this.length++;
+    }
+  }
 
   /** removeAt(idx): return & remove item at idx, */
 
