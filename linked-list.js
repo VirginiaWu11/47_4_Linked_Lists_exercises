@@ -81,12 +81,12 @@ class LinkedList {
 
   /** getAt(idx): get val at idx. */
 
-  getAt(idx) {
+  getAt(idx, returnNode = false) {
     let i = 0;
     let currentNode = this.head;
     while (currentNode) {
       if (i === idx) {
-        return currentNode.val;
+        return returnNode ? currentNode : currentNode.val;
       }
       currentNode = currentNode.next;
       i++;
@@ -94,17 +94,23 @@ class LinkedList {
   }
 
   /** setAt(idx, val): set val at idx to val */
+  // without using prev function, getAt:
+  // setAt(idx, val) {
+  //   let i = 0;
+  //   let currentNode = this.head;
+  //   while (currentNode) {
+  //     if (i === idx) {
+  //       currentNode.val = val;
+  //     }
+  //     currentNode = currentNode.next;
+  //     i++;
+  //   }
+  // }
 
+  //  using previous function getAt:
   setAt(idx, val) {
-    let i = 0;
-    let currentNode = this.head;
-    while (currentNode) {
-      if (i === idx) {
-        currentNode.val = val;
-      }
-      currentNode = currentNode.next;
-      i++;
-    }
+    let updateNode = this.getAt(idx, true);
+    updateNode.val = val;
   }
 
   /** insertAt(idx, val): add node w/val before idx. */
