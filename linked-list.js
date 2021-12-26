@@ -150,16 +150,14 @@ class LinkedList {
   average() {
     let currentNode = this.head;
     let sum = 0;
-    let i = 0;
     if (this.length === 0) {
       return 0;
     }
     while (currentNode) {
       sum = currentNode.val + sum;
       currentNode = currentNode.next;
-      i++;
     }
-    return sum / i;
+    return sum / this.length;
   }
 }
 
